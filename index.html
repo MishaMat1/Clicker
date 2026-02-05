@@ -2,28 +2,36 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" type="text/css" href="styles.css">
-    <script type="text/javascript" src="JavaScript.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <title>My incremental game!</title>
 </head>
 <body>
-    Points: <span id="points">0</span><br />
+    Points: <span id="points">0</span>  (<span id="idle">0</span>/s)<br />
     <button onClick="pointClick()">+1 point</button><br />
-    ClickPower: <span id="upgrade">0</span><br />
-    <button id="upgrade" onClick="upgradeClick()"><span id="cost">25</span> points<br />
+    Click Power: <span id="upgrade">0</span><br />
+    <button id="upgrade" onclick="upgradeClick()"><span id="cost">25</span> points<br />
             +1 per click
     </button> effect: + <span id="effect">0</span><br />
-    ClickMultiplier: <span id="upgrade2">0</span><br />
-    <button id="upgrade2" onClick="upgradeClick2()"><span id="cost2">50</span> points<br />
+    Multiplier: <span id="upgrade2">0</span><br />
+    <button id="upgrade2" onclick="upgradeClick2()"><span id="cost2">50</span> points<br />
             +1x points 
     </button> effect: + x<span id="effect2">1</span><br />
-    ClickCompound: <span id="upgrade3">0</span><br />
-    <button id="upgrade3" onClick="upgradeClick3()"><span id="cost3">1000</span> points<br />
+    Compound: <span id="upgrade3">0</span><br />
+    <button id="upgrade3" onclick="upgradeClick3()"><span id="cost3">1000</span> points<br />
         x2 points 
     </button> effect: x<span id="effect3">1</span><br />
+    Autoclickers: <span id="autoclickers">0</span><br>
+    <button id="autoclick" onclick="Autoclick()"><span id="auto-cost">100</span> points<br>1 autoclicker = 1/5 of normal click</button><br>
     Prestige: <span id="prestige">0</span><br />
-    <button id="reset" onClick="ResetLayer()"> Prestige<br />
-        <span>1,000,000</span> points</button> effect: x<span id="effect4">1</span>
+    <button id="reset" onclick="ResetLayer()"> Prestige<br /><span id="amount">1,000,000 points</span></button> 
+    effect: x<span id="effect4">1</span><br>
+    Prestige upgrades<br><br>
+    <button id="prestigeUpg" onclick="PrestigeUpg()">Point boost<br>Boosts your points by x3<br><span id="prestigeCost">1 PP</span></button>
+    <button id="unlockBuyable">Or just an upgrade...?<br>Unlocks a prestige buyable<br><span id="prestigeCost2">3 PP</span></button>
+    <button id="autoclickmulti">Strong Autoclickers<br>Autoclickers are x2 stronger<br><span id="prestigeCost3">5 PP</span></button><br>
+    <span id="buyables">Prestige buyables</span><br>
+    <button id="prestigeBuyable" onclick="upgradeClick4()">Increase points by x1.5 per purchase<br><span id="cost4">3</span> PP</button>
+    <script type="text/javascript" src="JavaScript.js"></script>
 </body>
 </html>
