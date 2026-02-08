@@ -1,3 +1,18 @@
-#prestigeBuyable, #buyables{
-    display: none
+.buyables{
+    display: none;
+}
+.point-button{
+    padding: 8px 15px;
+}
+.prestige-upgrades, .buy-max{
+    display: none;
+}
+.upgrade-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#third-buyable{
+    display: none;
 }

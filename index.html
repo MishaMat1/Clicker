@@ -7,31 +7,41 @@
     <title>My incremental game!</title>
 </head>
 <body>
-    Points: <span id="points">0</span>  (<span id="idle">0</span>/s)<br />
-    <button onClick="pointClick()">+1 point</button><br />
-    Click Power: <span id="upgrade">0</span><br />
-    <button id="upgrade" onclick="upgradeClick()"><span id="cost">25</span> points<br />
-            +1 per click
-    </button> effect: + <span id="effect">0</span><br />
-    Multiplier: <span id="upgrade2">0</span><br />
-    <button id="upgrade2" onclick="upgradeClick2()"><span id="cost2">50</span> points<br />
-            +1x points 
-    </button> effect: + x<span id="effect2">1</span><br />
-    Compound: <span id="upgrade3">0</span><br />
-    <button id="upgrade3" onclick="upgradeClick3()"><span id="cost3">1000</span> points<br />
-        x2 points 
-    </button> effect: x<span id="effect3">1</span><br />
+    Points: <span id="points">0</span>  (<span id="idle">0</span>/s)<br>
+    <button onClick="pointClick()" class="point-button">+1 point</button><br><br>
+    Click Power: <span id="upgrade">0</span><br>
+<div class="upgrade-row">
+    <button id="upgrade" onclick="upgradeClick()"><span id="cost">25</span> points<br>+1 per click</button>
+    <button onclick="upgradeClickMax()" class="buy-max">Buy max</button> effect: + <span id="effect">0</span>
+</div><br>
+    Multiplier: <span id="upgrade2">0</span><br>
+<div class="upgrade-row">
+    <button id="upgrade2" onclick="upgradeClick2()"><span id="cost2">50</span> points<br>+1x points</button>
+    <button onclick="upgradeClick2Max()" class="buy-max">Buy max</button> effect: + x<span id="effect2">1</span>
+</div><br>
+    Compound: <span id="upgrade3">0</span><br>
+<div class="upgrade-row">
+    <button id="upgrade3" onclick="upgradeClick3()"><span id="cost3">1000</span> points<br />x2 points</button> 
+    <button onclick="upgradeClick3Max()" class="buy-max">Buy max</button> effect: x<span id="effect3">1</span>
+</div><br>
     Autoclickers: <span id="autoclickers">0</span><br>
-    <button id="autoclick" onclick="Autoclick()"><span id="auto-cost">100</span> points<br>1 autoclicker = 1/5 of normal click</button><br>
-    Prestige: <span id="prestige">0</span><br />
+<div class="upgrade-row">
+    <button id="autoclick" onclick="Autoclick()"><span id="auto-cost">100</span> points<br>1 autoclicker = 1/5 of normal click</button>
+    <button onclick="AutoclickMax()" class="buy-max">Buy max</button>
+</div><br>
+    Prestige: <span id="prestige">0</span><br>
     <button id="reset" onclick="ResetLayer()"> Prestige<br /><span id="amount">1,000,000 points</span></button> 
     effect: x<span id="effect4">1</span><br>
-    Prestige upgrades<br><br>
+   <div class="prestige-upgrades"> Prestige upgrades<br><br>
     <button id="prestigeUpg" onclick="PrestigeUpg()">Point boost<br>Boosts your points by x3<br><span id="prestigeCost">1 PP</span></button>
-    <button id="unlockBuyable">Or just an upgrade...?<br>Unlocks a prestige buyable<br><span id="prestigeCost2">3 PP</span></button>
-    <button id="autoclickmulti">Strong Autoclickers<br>Autoclickers are x2 stronger<br><span id="prestigeCost3">5 PP</span></button><br>
-    <span id="buyables">Prestige buyables</span><br>
-    <button id="prestigeBuyable" onclick="upgradeClick4()">Increase points by x1.5 per purchase<br><span id="cost4">3</span> PP</button>
+    <button id="unlockBuyables">Or just upgrades...?<br>Unlocks prestige buyables<br><span id="prestigeCost2">3 PP</span></button>
+    <button id="autoclickmulti">Strong Autoclickers<br>Autoclickers are x2 stronger<br><span id="prestigeCost3">5 PP</span></button>
+    <button id="buyMax">Finally some qol<br>Unlock buy max<br><span id="prestigeCost5">50 PP</span></button>
+    <button id="anotherBuyable">Another buyable<br>Just as title says<br><span id="prestigeCost7">100 PP</span></button><br>
+    <span class="buyables">Prestige buyables</span>
+    <button class="buyables" onclick="upgradeClick4()">Boost points by x1.5<br><span id="cost4">3</span> PP</button>
+    <button class="buyables" onclick="delaySoftcap()">Delay prestige boost <br>softcap by 5<br><span id="prestigeCost4">25</span> PP</button>
+    <button id="third-buyable" onclick="CostDecrease()">Cheaper upgrades<br>Decrease point upgrades cost by 10%<br><span id="prestigeCost6">50</span> PP</button>
     <script type="text/javascript" src="JavaScript.js"></script>
 </body>
 </html>
