@@ -203,6 +203,7 @@ function AutoclickMax() {
 }
 
 function Idle() {
+    game.number = (game.number2 * game.number3 * game.number4 * game.number5 * game.number6) ** game.number7;
     game.idle = (game.number / 5) * game.Autoclickers * game.AutoclickMulti;
     game.points += game.idle;
     PrestigePreview();
@@ -623,4 +624,5 @@ window.onload = function() {
     loadGame();
     refreshPrestigeUI();
     showMilestones();
+
 }
