@@ -7,6 +7,8 @@
     <title>My incremental game!</title>
 </head>
 <body>
+    <p style="font-size: 20px">End-game: 2 ascension points</p>
+    <button id="hard-reset" onclick="resetGame()">Hard reset</button><br><br>
     Points: <span id="points">0</span>  (<span id="idle">0</span>/s)<br>
     <button onClick="pointClick()" class="point-button">+1 point</button><br><br>
     Click Power: <span id="upgrade">0</span><br>
@@ -26,22 +28,34 @@
 </div><br>
     Autoclickers: <span id="autoclickers">0</span><br>
 <div class="upgrade-row">
-    <button id="autoclick" onclick="Autoclick()"><span id="auto-cost">100</span> points<br>1 autoclicker = 1/5 of normal click</button>
+    <button id="autoclick" onclick="Autoclick()"><span id="auto-cost">100</span> points<br><span id="auto-desc">1 autoclicker = 1/5 of normal click</span></button>
     <button onclick="AutoclickMax()" class="buy-max">Buy max</button>
 </div><br>
     Prestige: <span id="prestige">0</span><br>
     <button id="reset" onclick="ResetLayer()"> Prestige<br /><span id="amount">1,000,000 points</span></button> 
     effect: x<span id="effect4">1</span><br>
    <div class="prestige-upgrades"> Prestige upgrades<br><br>
-    <button id="prestigeUpg" onclick="PrestigeUpg()">Point boost<br>Boosts your points by x3<br><span id="prestigeCost">1 PP</span></button>
-    <button id="unlockBuyables">Or just upgrades...?<br>Unlocks prestige buyables<br><span id="prestigeCost2">3 PP</span></button>
+    <button id="prestigeUpg">Point boost<br>Boosts your points by x3<br><span id="prestigeCost">1 PP</span></button>
+    <button id="unlockBuyable">Or just upgrades...?<br>Unlocks prestige buyables<br><span id="prestigeCost2">3 PP</span></button>
     <button id="autoclickmulti">Strong Autoclickers<br>Autoclickers are x2 stronger<br><span id="prestigeCost3">5 PP</span></button>
-    <button id="buyMax">Finally some qol<br>Unlock buy max<br><span id="prestigeCost5">50 PP</span></button>
-    <button id="anotherBuyable">Another buyable<br>Just as title says<br><span id="prestigeCost7">100 PP</span></button><br>
-    <span class="buyables">Prestige buyables</span>
-    <button class="buyables" onclick="upgradeClick4()">Boost points by x1.5<br><span id="cost4">3</span> PP</button>
-    <button class="buyables" onclick="delaySoftcap()">Delay prestige boost <br>softcap by 5<br><span id="prestigeCost4">25</span> PP</button>
-    <button id="third-buyable" onclick="CostDecrease()">Cheaper upgrades<br>Decrease point upgrades cost by 10%<br><span id="prestigeCost6">50</span> PP</button>
+    <button id="buyMax">Finally some qol<br>Unlock buy max<br><span id="prestigeCost5">25 PP</span></button>
+    <button id="anotherBuyable">Another buyable<br>Just as title says<br><span id="prestigeCost7">100 PP</span></button>
+    <button id="fullPower">Even stronger autoclickers<br>Autoclickers work at full power<br><span id="prestigeCost11">500 PP</span></button>
+    <button id="exponent">Exponential points<br>Raise points gain by ^1.1<br><span id="prestigeCost8">1,000 PP</span></button>
+    <button id="boost">More prestige<br>Triple prestige gain<br><span id="prestigeCost9">2,500 PP</span></button>
+    <button id="anotherBuyable2">Finally a new buyable<br>Another one!<br><span id="prestigeCost12">3,000 PP</span></button>
+    <button id="formula">Better boost<br>Prestige boost formula is better<br><span id="prestigeCost10">10,000 PP</span></button>
+    <button id="newLayer">New layer<br>Unlock new reset layer<br><span id="prestigeCost13">100,000 PP</span></button><br>
+    <span id="buyables">Prestige buyables</span><br>
+    <button id="buyable" onclick="upgradeClick4()">Boost points by x1.5<br><span id="buyableCost">3</span> PP</button>
+    <button id="second-buyable" onclick="costDecreaseBuyable()">Cheaper upgrades<br>Decrease point upgrades cost by 10%<br><span id="buyableCost2">50</span> PP</button>
+    <button id="third-buyable" onclick="PrestigeMulti()">Even more prestige!<br>Boosts prestige points by x1.5<br><span id="buyableCost3">1,000</span> PP</button>
+    <div id="ascend">Ascension: <span id="ascension">0</span><br>
+    <button id="reset2" onclick="AscensionLayer()"> Ascension<br><span id="ascension-amount">1,000,000 PP</span></button></div><br>
+    <div class="milestones">Ascension milestones<br>
+        <button id="milestone">1 Total ascension points<br>x5 point gain<br><span id="milestone-get">Not obtained</span></button><br>
+        <button id="milestone2">2 Total ascension points<br>Triple prestige gain<br><span id="milestone2-get">Not obtained</span></button>
+    </div>
     <script type="text/javascript" src="JavaScript.js"></script>
 </body>
 </html>

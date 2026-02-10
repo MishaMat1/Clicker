@@ -1,4 +1,4 @@
-.buyables{
+#buyable, #buyables, #second-buyable, #third-buyable{
     display: none;
 }
 .point-button{
@@ -13,6 +13,9 @@
     gap: 8px;
 }
 
-#third-buyable{
+#ascend {
+    display: none;
+}
+.milestones {
     display: none;
 }
