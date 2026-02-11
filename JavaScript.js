@@ -475,8 +475,8 @@ function refreshPrestigeUI() {
     }
 
     if (game.buyableUnlockBought) {
-        const buyables = document.getElementsByClassName("buyables");
-        for (let i = 0; i < buyables.length; i++) buyables[i].style.display = "block";
+        document.getElementById("buyables").style.display = "block";
+        document.getElementById("buyable").style.display = "block";
         document.getElementById("prestigeCost2").innerText = "Bought!";
     }
 
@@ -624,5 +624,4 @@ window.onload = function() {
     loadGame();
     refreshPrestigeUI();
     showMilestones();
-
 }
