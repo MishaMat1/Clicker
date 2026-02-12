@@ -650,6 +650,4 @@ window.onload = function() {
     loadGame();
     refreshPrestigeUI();
     showMilestones();
-
 }
-
