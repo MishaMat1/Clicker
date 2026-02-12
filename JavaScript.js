@@ -21,7 +21,7 @@ let game = {
     pointCostMulti: 1,
     PrestigeCost4: 3,
     PrestigeCost6: 1000,
-    PrestigeCost7: 50,
+    PrestigeCost7: 25,
     PrestigeReq: 1e6,
     PrestigeAmount: 0,
     PrestigeFormulaPower: 2,
@@ -650,4 +650,5 @@ window.onload = function() {
     loadGame();
     refreshPrestigeUI();
     showMilestones();
+
 }
