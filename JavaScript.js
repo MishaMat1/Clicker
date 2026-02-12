@@ -20,8 +20,8 @@ let game = {
     upgradeCost3: 1000,
     pointCostMulti: 1,
     PrestigeCost4: 3,
-    PrestigeCost6: 50,
-    PrestigeCost7: 1000,
+    PrestigeCost6: 1000,
+    PrestigeCost7: 50,
     PrestigeReq: 1e6,
     PrestigeAmount: 0,
     PrestigeFormulaPower: 2,
@@ -40,6 +40,7 @@ let game = {
     costDecreaseBought: false,
     buyMaxBought: false,
     secondBuyableBought: false,
+    evenBetterGainBought: false,
     exponentBought: false,
     betterGainBought: false,
     prestigeMultiUnlockBought: false,
@@ -94,8 +95,8 @@ function updateTexts() {
     document.getElementById("cost2").innerText = Number(game.upgradeCost2.toFixed()).toLocaleString("en-US");
     document.getElementById("cost3").innerText = Number(game.upgradeCost3.toFixed()).toLocaleString("en-US");
     document.getElementById("buyableCost").innerText = Number(game.PrestigeCost4).toLocaleString("en-US");
-    document.getElementById("buyableCost2").innerText = Number(game.PrestigeCost6).toLocaleString("en-US");
-    document.getElementById("buyableCost3").innerText = Number(game.PrestigeCost7).toLocaleString("en-US");
+    document.getElementById("buyableCost2").innerText = Number(game.PrestigeCost7).toLocaleString("en-US");
+    document.getElementById("buyableCost3").innerText = Number(game.PrestigeCost6).toLocaleString("en-US");
     document.getElementById("prestige").innerText = Number(game.Prestige).toLocaleString("en-US");
     document.getElementById("ascension").innerText = Number(game.Ascension).toLocaleString("en-US");
     document.getElementById("effect").innerText = Number(game.ClickPower).toLocaleString("en-US");
@@ -331,6 +332,22 @@ function secondBuyable() {
     }
 }
 
+const better = document.getElementById("morePrestige")
+better.addEventListener("click", betterGainUpgrade)
+
+function betterGainUpgrade() {
+    if (game.Prestige >= 250 && !game.evenBetterGainBought) {
+        game.Prestige -= 250;
+        game.evenBetterGainBought = true
+        document.getElementById("prestigeCost14").innerText = "Bought!";
+        game.PrestigeAmountBoost *= 5;
+        better.removeEventListener("click", betterGainUpgrade)
+        PrestigeBoost();
+        updateTexts();
+        saveGame();
+    }
+}
+
 const fullpower = document.getElementById("fullPower")
 fullpower.addEventListener("click", fullPowerUpgrade)
 
@@ -372,7 +389,7 @@ function betterGain() {
         game.Prestige -= 2500;
         game.betterGainBought = true
         document.getElementById("prestigeCost9").innerText = "Bought!";
-        game.PrestigeAmountBoost = 3;
+        game.PrestigeAmountBoost *= 5;
         boost.removeEventListener("click", betterGain)
         PrestigeBoost();
         updateTexts();
@@ -460,7 +477,7 @@ function PrestigeMulti() {
     if (game.Prestige >= game.PrestigeCost7) {
         game.Prestige -= game.PrestigeCost7;
         game.Prestigemulti *= 1.5;
-        game.PrestigeCost7 *= 1.5;
+        game.PrestigeCost7 *= 2;
         PrestigeBoost();
         updateTexts();
         saveGame();
@@ -468,10 +485,16 @@ function PrestigeMulti() {
 }
 
 function refreshPrestigeUI() {
-    if (game.prestigeUpgBought) {
+    if (game.Prestige >= 1) {
         const elems = document.getElementsByClassName("prestige-upgrades");
         for (let i = 0; i < elems.length; i++) elems[i].style.display = "block";
+    }
+    
+
+    if (game.prestigeUpgBought) {
         document.getElementById("prestigeCost").innerText = "Bought!";
+        const elems = document.getElementsByClassName("prestige-upgrades");
+        for (let i = 0; i < elems.length; i++) elems[i].style.display = "block";
     }
 
     if (game.buyableUnlockBought) {
@@ -513,6 +536,7 @@ function refreshPrestigeUI() {
     }
 
     if (game.exponentBought) document.getElementById("prestigeCost8").innerText = "Bought!";
+    if (game.evenBetterGainBought) document.getElementById("prestigeCost14").innerText = "Bought!";
     if (game.betterGainBought) document.getElementById("prestigeCost9").innerText = "Bought!";
     if (game.betterFormulaBought) document.getElementById("prestigeCost10").innerText = "Bought!";
     if (game.upgradeClick4Bought) document.getElementById("buyableCost").innerText = "Bought!";
@@ -531,6 +555,7 @@ function prestigeReturn(){
     game.costDecreaseBought = false
     game.secondBuyableBought = false
     game.exponentBought = false
+    game.evenBetterGainBought = false
     game.betterGainBought =  false
     game.prestigeMultiUnlockBought = false
     game.betterFormulaBought = false
@@ -551,6 +576,7 @@ function ResetUpgrades(){
     document.getElementById("prestigeCost2").innerText = "3 PP";
     document.getElementById("prestigeCost3").innerText = "5 PP";
     document.getElementById("prestigeCost7").innerText = "100 PP";
+    document.getElementById("prestigeCost14").innerText = "250 PP";
     document.getElementById("prestigeCost11").innerText = "500 PP";
     document.getElementById("prestigeCost8").innerText = "1,000 PP";
     document.getElementById("prestigeCost9").innerText = "2,500 PP";
