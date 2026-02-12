@@ -561,8 +561,8 @@ function prestigeReturn(){
     game.betterFormulaBought = false
     game.pointCostMulti = 1
     game.PrestigeCost4 = 3
-    game.PrestigeCost6 = 50
-    game.PrestigeCost7 = 1000
+    game.PrestigeCost6 = 1000
+    game.PrestigeCost7 = 25
     game.PrestigeReq = 1e6
     game.PrestigeAmount = 0
     game.PrestigeFormulaPower = 2
@@ -652,3 +652,4 @@ window.onload = function() {
     showMilestones();
 
 }
+
