@@ -7,7 +7,7 @@
     <title>My incremental game!</title>
 </head>
 <body>
-    <p style="font-size: 20px">End-game: 2 ascension points</p>
+    <p style="font-size: 20px">End-game: 3 ascension points and break the game</p>
     <button id="hard-reset" onclick="resetGame()">Hard reset</button><br><br>
     Points: <span id="points">0</span>  (<span id="idle">0</span>/s)<br>
     <button onClick="pointClick()" class="point-button">+1 point</button><br><br>
@@ -54,8 +54,9 @@
     <div id="ascend">Ascension: <span id="ascension">0</span><br>
     <button id="reset2" onclick="AscensionLayer()"> Ascension<br><span id="ascension-amount">1,000,000 PP</span></button></div><br>
     <div class="milestones">Ascension milestones<br>
-        <button id="milestone">1 Total ascension points<br>x5 point gain<br><span id="milestone-get">Not obtained</span></button><br>
-        <button id="milestone2">2 Total ascension points<br>Triple prestige gain<br><span id="milestone2-get">Not obtained</span></button>
+        <button id="milestone">1 Total ascension points<br>x5 point gain autoclickers are x2 faster<br><span id="milestone-get">Not obtained</span></button><br>
+        <button id="milestone2">2 Total ascension points<br>Triple prestige gain<br><span id="milestone2-get">Not obtained</span></button><br>
+        <button id="milestone3">3 Total ascension points<br>Raise point gain by ^1.5<br><span id="milestone3-get">Not obtained</span></button>
     </div>
     <script type="text/javascript" src="JavaScript.js"></script>
 </body>

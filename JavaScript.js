@@ -8,6 +8,8 @@ let game = {
     number5: 1,
     number6: 1,
     number7: 1,
+    number8: 1,
+    number9: 1,
     idle: 0,
     Autoclickers: 0,
     AutoclickMulti: 1,
@@ -50,7 +52,8 @@ let game = {
 
 game.milestones = {
     AscensionMilestone: false,
-    AscensionMilestone2: false
+    AscensionMilestone2: false,
+    AscensionMilestone3: false
 }
 
 // ------------------------
@@ -122,7 +125,7 @@ function PrestigePreview() {
 // CLICK FUNCTION
 // ------------------------
 function pointClick() {
-    game.number = (game.number2 * game.number3 * game.number4 * game.number5 * game.number6) ** game.number7;
+    game.number = ((game.number2 * game.number3 * game.number4 * game.number5 * game.number6 * game.number8) ** game.number7) ** game.number9;
     game.points += game.number;
     PrestigePreview();
     AscensionPreview();
@@ -204,14 +207,15 @@ function AutoclickMax() {
 }
 
 function Idle() {
-    game.number = (game.number2 * game.number3 * game.number4 * game.number5 * game.number6) ** game.number7;
+    game.number = ((game.number2 * game.number3 * game.number4 * game.number5 * game.number6 * game.number8) ** game.number7) ** game.number9;
     game.idle = (game.number / 5) * game.Autoclickers * game.AutoclickMulti;
     game.points += game.idle;
+    checkMilestones();
     PrestigePreview();
     AscensionPreview();
     updateTexts();
 }
-setInterval(Idle, 1000);
+let interval = setInterval(Idle, 1000);
 
 // PRESTIGE
 
@@ -389,7 +393,7 @@ function betterGain() {
         game.Prestige -= 2500;
         game.betterGainBought = true
         document.getElementById("prestigeCost9").innerText = "Bought!";
-        game.PrestigeAmountBoost *= 5;
+        game.PrestigeAmountBoost *= 3;
         boost.removeEventListener("click", betterGain)
         PrestigeBoost();
         updateTexts();
@@ -560,6 +564,7 @@ function prestigeReturn(){
     game.prestigeMultiUnlockBought = false
     game.betterFormulaBought = false
     game.pointCostMulti = 1
+    game.AutoclickMulti = 1
     game.PrestigeCost4 = 3
     game.PrestigeCost6 = 1000
     game.PrestigeCost7 = 25
@@ -585,9 +590,9 @@ function ResetUpgrades(){
 }
 
 function Ascend0(){
-    ResetUpgrades()
     Prestige0()
     prestigeReturn()
+    ResetUpgrades() 
 }
 
 function AscensionPreview() {
@@ -623,21 +628,30 @@ function checkMilestones(){
     if(game.TotalAscension >= 1){
         if(!game.milestones.AscensionMilestone) {
         game.milestones.AscensionMilestone = true
-        game.number6 *= 5;
-        console.log(game.number6)
+        game.number8 *= 5;   
     }
+    clearInterval(interval);
+    interval = setInterval(Idle, 500); 
     document.getElementById("milestone-get").innerText = "Obtained"
-    }
-
+}
     if(game.TotalAscension >= 2){
         if(!game.milestones.AscensionMilestone2) {
         game.milestones.AscensionMilestone2 = true
-        game.Prestigemulti *= 3;
-    }
-    document.getElementById("milestone2-get").innerText = "Obtained"
+        game.Prestigemulti *= 3;  
+}
+document.getElementById("milestone2-get").innerText = "Obtained"
+            
+}
+
+if(game.TotalAscension >= 3){
+        if(!game.milestones.AscensionMilestone3) {
+        game.milestones.AscensionMilestone3 = true
+        game.number9 = 1.5;
+    
+}
+    document.getElementById("milestone3-get").innerText = "Obtained"
 }
 }
-setInterval(checkMilestones, 1000)
 
 function showMilestones(){
     if(game.TotalAscension >= 1){
