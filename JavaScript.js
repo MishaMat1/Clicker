@@ -11,6 +11,7 @@ let game = {
     number8: 1,
     number9: 1,
     idle: 0,
+    tickspeed: 1,
     Autoclickers: 0,
     AutoclickMulti: 1,
     ClickPower: 0,
@@ -92,7 +93,7 @@ function updateTexts() {
     document.getElementById("upgrade2").innerText = game.ClickMultiplier;
     document.getElementById("upgrade3").innerText = game.ClickCompound;
     document.getElementById("autoclickers").innerText = game.Autoclickers;
-    document.getElementById("idle").innerText = Number(Math.ceil(game.idle)).toLocaleString("en-US");
+    document.getElementById("idle").innerText = Number(Math.ceil(game.idle * game.tickspeed)).toLocaleString("en-US");
     document.getElementById("auto-cost").innerText = Number(game.autoCost.toFixed()).toLocaleString("en-US");
     document.getElementById("cost").innerText = Number(game.upgradeCost.toFixed()).toLocaleString("en-US");
     document.getElementById("cost2").innerText = Number(game.upgradeCost2.toFixed()).toLocaleString("en-US");
@@ -628,7 +629,8 @@ function checkMilestones(){
     if(game.TotalAscension >= 1){
         if(!game.milestones.AscensionMilestone) {
         game.milestones.AscensionMilestone = true
-        game.number8 *= 5;   
+        game.number8 *= 5;
+        game.tickspeed *= 2;   
     }
     clearInterval(interval);
     interval = setInterval(Idle, 500); 
